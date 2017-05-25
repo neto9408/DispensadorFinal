@@ -53,6 +53,5 @@ public class ControladorDistribuidorArcaTest {
 	private void TestDevolverDinero(int cambio, int expectativa){
 		int salida= d.devolverDineroArca(cambio);
 		assertEquals(expectativa, salida);
-		
 	}
 }

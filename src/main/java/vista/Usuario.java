@@ -21,7 +21,7 @@ public class Usuario {
 		if(cDA.isEstadoServicio()==true){
 		do{
 		System.out.println("Estado de servicio de la maquina: ACTIVO");
-		System.out.println("digite \n 1. Comprar Producto \n 2. Ver productos \n 3. Ver arcas \n 4. Ingresar como administrador \n 5. Salir");
+		System.out.println("digite \n 1. Comprar Producto \n 2.ver productos \n 3.ver arcas \n 4. ingresar como administrador \n 5. salir");
 		opc= leer.datoInt();
 		
 		switch (opc) {
@@ -48,14 +48,14 @@ public class Usuario {
 		}else{
 			int opc2=0;
 			do{
-			System.out.println("Estado de servicio de la maquina:  INACTIVA");
-			System.out.println("Por por favor ingrese como administrador para activar la maquina");
+			System.out.println("estado de servicio de la maquina: INACTIVA");
+			System.out.println("por por favor ingrese como administrador para activar la maquina");
 			int pass =leer.datoInt();
 			if(pass==cDA.getPassWordAdmin()){
 				menu2();
 				opc2=1;
 			}else{
-				System.out.println("Password incorrecto");
+				System.out.println("password incorrecto");
 			}
 			}while(opc2!=1);
 		}
@@ -71,38 +71,42 @@ public class Usuario {
 		
 		ArrayList<Integer> dinero = new ArrayList<Integer>();
 		
-		System.out.println("Digite el codigo del producto");
+		System.out.println("digite el codigo del producto");
 		codigo=leer.dato();
 		
 		if(cU.buscarProducto(codigo)!=null){
 			producto=cU.buscarProducto(codigo);
-			System.out.println("El producto encontrado fue"+producto);
+			System.out.println("el producto encontrado fue"+producto);
 		
 		
 		while(din!=0){
 			
-			System.out.println("Digite la denominacion o Ingrese '0' si ya completo el valor de su compra");
+			System.out.println("digite la denominacion o 0 si ya completo el dinero");
 			din=leer.datoInt();
+			
 			if(din!=0){
 				dinero.add(din);
 				saldo=saldo+din;
 			}
-			System.out.println("Saldo :"+saldo);
+			System.out.println("saldo"+saldo);
 			
 		}
 		
 		cambio=cU.ingresarSaldo(dinero, codigo);
 		if(cambio>=0){
-		System.out.println("El valor del producto es : "+producto.getValor());
-		System.out.println("Su saldo era de : "+saldo);
-		System.out.println("El cambio es : "+cambio);
+		System.out.println("el valor del producto es: "+producto.getValor());
+		System.out.println("su saldo era de: "+saldo);
+		System.out.println("el cambio es: "+cambio);
 		}else{
-			System.out.println("El valor del producto es: "+producto.getValor());
-			System.out.println("Saldo :"+saldo);
-			System.out.println("Fondos insufucientes para comprar el producto");
+			System.out.println("el valor del producto es: "+producto.getValor());
+			System.out.println("saldo"+saldo);
+			System.out.println("fondos insufucientes para comprar el producto");
 		}
 		}else{
-			System.out.println("Producto no encontrado");
+			System.out.println("producto no encontrado");
+		}
+		if(cambio==saldo){
+			System.out.println("denominacion ingresada no valida");
 		}
 	}
 
@@ -120,7 +124,7 @@ public class Usuario {
 	
 	public void ingresoAdmin(){
 		
-		System.out.println("Digigte el password :");
+		System.out.println("digigte el password");
 		int pass = leer.datoInt();
 		
 		if(cDA.getPassWordAdmin()==pass){
@@ -136,7 +140,7 @@ public class Usuario {
 		System.out.println("BIENVENIDO ADMIN");
 		do{
 		System.out.println("Estado de Servicio de la Maquina: "+cDA.isEstadoServicio());
-		System.out.println("digite \n 1. Modificar producto \n 2. Modificar existencia \n 3. Modificar denominacion arca \n 4. Modificar tope Arca \n 5. Modificar estado de la maquina \n 6. ver productos \n 7. Ver arca \n 8. Volver al menu anterior");
+		System.out.println("digite \n 1. modificar producto \n 2.modificar existencia \n 3.modificar denominacion arca \n 4. modificar tope Arca \n 5. modificar estado de la maquina \n 6. ver productos \n 7. ver arca \n 8. volver al menu anterior");
 		opc= leer.datoInt();
 		
 		switch (opc) {

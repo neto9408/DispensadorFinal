@@ -98,13 +98,24 @@ public class ControladorUsuario {
 		int retorno=0;
 		int cambio=0;
 		int cantidadDinero=0;
+		int denominacionAcertada=0;
 		
 		for (int i = 0; i < cantidadDineroIngresado.size(); i++) {
 			cantidadDinero=cantidadDinero+cantidadDineroIngresado.get(i);
 		}
-	
 		
+		for (int i = 0; i < arca.getListaArcas().size(); i++) {
+			for (int j = 0; j < cantidadDineroIngresado.size(); j++) {
+				if(arca.getListaArcas().get(i).getDenominacion()==cantidadDineroIngresado.get(j)){
+					denominacionAcertada++;
+				}
+			}
+		}
+		
+	if(denominacionAcertada==cantidadDineroIngresado.size()){	
+		System.out.println("entro");
 		for (int i = 0; i < listaEspiral.size(); i++) {
+		
 			for (int j = 0; j <listaEspiral.get(i).getTopeEspiral() ; j++) {
 				if(listaEspiral.get(i).getListaProducto().get(j).getCodigoProducto().equalsIgnoreCase(codigoProducto)){
 					if(listaEspiral.get(i).getListaProducto().get(j).getValor()<=cantidadDinero){
@@ -121,8 +132,11 @@ public class ControladorUsuario {
 					}
 				}
 			}
+			
 		}
-		
+	}else{
+		retorno=cantidadDinero;
+	}
 
 		
 		return retorno;
@@ -217,62 +231,6 @@ public class ControladorUsuario {
 	public void imprimirArcas(){
 		
 		System.out.println(arca.getListaArcas());
-	}
-
-	public ControladorDistribuidorArca getArca() {
-		return arca;
-	}
-
-	public void setArca(ControladorDistribuidorArca arca) {
-		this.arca = arca;
-	}
-
-	public int getCantidadDineroIngresado() {
-		return cantidadDineroIngresado;
-	}
-
-	public void setCantidadDineroIngresado(int cantidadDineroIngresado) {
-		this.cantidadDineroIngresado = cantidadDineroIngresado;
-	}
-
-	public int getCambio() {
-		return cambio;
-	}
-
-	public void setCambio(int cambio) {
-		this.cambio = cambio;
-	}
-
-	public ArrayList<Producto> getListaProducto1() {
-		return listaProducto1;
-	}
-
-	public void setListaProducto1(ArrayList<Producto> listaProducto1) {
-		this.listaProducto1 = listaProducto1;
-	}
-
-	public ArrayList<Producto> getListaProducto2() {
-		return listaProducto2;
-	}
-
-	public void setListaProducto2(ArrayList<Producto> listaProducto2) {
-		this.listaProducto2 = listaProducto2;
-	}
-
-	public ArrayList<Producto> getListaProducto3() {
-		return listaProducto3;
-	}
-
-	public void setListaProducto3(ArrayList<Producto> listaProducto3) {
-		this.listaProducto3 = listaProducto3;
-	}
-
-	public ArrayList<Espiral> getListaEspiral() {
-		return listaEspiral;
-	}
-
-	public void setListaEspiral(ArrayList<Espiral> listaEspiral) {
-		this.listaEspiral = listaEspiral;
 	}
 
 }
